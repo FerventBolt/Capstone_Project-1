@@ -1,0 +1,192 @@
+/* Browser Compatibility CSS Fallbacks */
+
+/* CSS Grid fallback for older browsers */
+@supports not (display: grid) {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .grid > * {
+    flex: 1 1 auto;
+    min-width: 250px;
+    margin: 0.5rem;
+  }
+}
+
+/* Flexbox fallback for very old browsers */
+@supports not (display: flex) {
+  .flex {
+    display: block;
+  }
+  
+  .flex > * {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+/* Transform fallback */
+@supports not (transform: translateX(-100%)) {
+  .sidebar-hidden {
+    left: -100%;
+  }
+  
+  .sidebar-visible {
+    left: 0;
+  }
+}
+
+/* Transition fallback */
+@supports not (transition: all 0.3s ease-in-out) {
+  .transition-all {
+    /* No transitions for older browsers */
+  }
+}
+
+/* Focus ring fallback for older browsers */
+@supports not (outline-offset: 2px) {
+  button:focus,
+  input:focus,
+  a:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 0;
+  }
+}
+
+/* Backdrop filter fallback */
+@supports not (backdrop-filter: blur(4px)) {
+  .backdrop-blur {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* CSS custom properties fallback */
+:root {
+  --sidebar-width: 16rem;
+  --sidebar-collapsed-width: 4rem;
+  --header-height: 4rem;
+  --primary-color: #3b82f6;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Fallback for browsers that don't support CSS custom properties */
+.sidebar-width {
+  width: 16rem;
+}
+
+.sidebar-collapsed-width {
+  width: 4rem;
+}
+
+/* Print styles */
+@media print {
+  .sidebar,
+  .mobile-menu-button,
+  .notification-center {
+    display: none !important;
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  
+  .stats-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-gray-50 {
+    background-color: white;
+  }
+  
+  .text-gray-600 {
+    color: black;
+  }
+  
+  .border-gray-200 {
+    border-color: black;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ensure consistent light theme */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --border-color: #e5e7eb;
+}
+
+/* Internet Explorer specific fixes */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .grid {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  
+  .flex {
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .items-center {
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  
+  .justify-between {
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}
+
+/* Safari specific fixes */
+@supports (-webkit-appearance: none) {
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+/* Firefox specific fixes */
+@-moz-document url-prefix() {
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
+}
+
+/* Edge specific fixes */
+@supports (-ms-ime-align: auto) {
+  .transform {
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}

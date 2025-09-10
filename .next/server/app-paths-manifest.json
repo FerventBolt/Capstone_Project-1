@@ -1,0 +1,11 @@
+{
+  "/api/staff/courses/route": "app/api/staff/courses/route.js",
+  "/api/admin/courses/route": "app/api/admin/courses/route.js",
+  "/(dashboard)/staff/dashboard/page": "app/(dashboard)/staff/dashboard/page.js",
+  "/(dashboard)/staff/courses/[courseId]/page": "app/(dashboard)/staff/courses/[courseId]/page.js",
+  "/(dashboard)/staff/courses/[courseId]/content/new/page": "app/(dashboard)/staff/courses/[courseId]/content/new/page.js",
+  "/(dashboard)/staff/courses/assignments/page": "app/(dashboard)/staff/courses/assignments/page.js",
+  "/(dashboard)/staff/students/page": "app/(dashboard)/staff/students/page.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(dashboard)/staff/grading/page": "app/(dashboard)/staff/grading/page.js"
+}
