@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { initializeCourseContent, isCourseContentInitialized, markCourseContentInitialized } from 'C:/CapstoneProject/Capstone_Project-main/src/lib/initialize-course-content'
-import ReminderPopupDemo from 'C:/CapstoneProject/Capstone_Project-main/src/components/shared/reminder-popup-demo'
+import { initializeCourseContent, isCourseContentInitialized, markCourseContentInitialized } from '@/lib/initialize-course-content'
+import ReminderPopupDemo from '@/components/shared/reminder-popup-demo'
 
 interface Course {
   id: string
