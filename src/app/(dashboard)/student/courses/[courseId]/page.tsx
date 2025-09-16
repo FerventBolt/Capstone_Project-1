@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { ArrowLeft, BookOpen, FileText, Clock, CheckCircle, AlertCircle, Users, Upload } from 'lucide-react'
-import { initializeCourseContent, isCourseContentInitialized, markCourseContentInitialized } from '@/lib/initialize-course-content'
+import { initializeCourseContent, isCourseContentInitialized, markCourseContentInitialized } from 'C:/CapstoneProject/Capstone_Project-main/src/lib/initialize-course-content'
 
 interface Course {
   id: string

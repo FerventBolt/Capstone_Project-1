@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase/supabase-client'
+import { supabase } from 'C:/CapstoneProject/Capstone_Project-main/src/lib/supabase/supabase-client'
 
 interface Invitation {
   id: string

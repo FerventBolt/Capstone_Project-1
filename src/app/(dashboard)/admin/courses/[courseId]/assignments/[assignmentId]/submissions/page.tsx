@@ -8,7 +8,7 @@ import { ArrowLeft, Download, Eye, MessageSquare, CheckCircle, Clock, AlertCircl
 interface Submission {
   id: string
   studentId: string
-  studentName: stringgit add .
+  studentName: string
   studentEmail: string
   submittedAt: string
   content: string
