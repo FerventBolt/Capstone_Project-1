@@ -2,6 +2,7 @@
   "name": "@cte-skillshub/web",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.12.3",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -55,4 +56,5 @@
     "ts-jest": "29.1.1",
     "typescript": "5.0.4"
   }
+
 }
