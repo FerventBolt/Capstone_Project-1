@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, createContext, useContext } from 'react'
-import { createClient } from 'C:/CapstoneProject/Capstone_Project-main/src/lib/supabase/supabase-client'
+import { createClient } from '@/lib/supabase/supabase-client'
 import type { User } from '@supabase/supabase-js'
 
 interface AuthContextType {

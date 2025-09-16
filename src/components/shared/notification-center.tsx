@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { notificationService, Notification, NotificationSubscription } from 'C:/CapstoneProject/Capstone_Project-main/src/lib/notifications'
+import { notificationService, Notification, NotificationSubscription } from '@/lib/notifications'
 
 interface NotificationCenterProps {
   userId?: string
