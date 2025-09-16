@@ -166,13 +166,8 @@ export default function LoginPage() {
               <p className="text-xs text-gray-500 mb-4">Demo Accounts:</p>
               <div className="space-y-2 text-xs">
                 <div className="demo-account-box">
-                  <strong>Admin:</strong> admin@lpu.edu.ph / admin123
-                </div>
-                <div className="demo-account-box">
-                  <strong>Staff:</strong> instructor@lpu.edu.ph / staff123
-                </div>
-                <div className="demo-account-box">
-                  <strong>Student:</strong> student@lpunetwork.edu.ph / student123
+                  <strong>Sup</strong> 
+                
                 </div>
               </div>
             </div>
