@@ -127,7 +127,7 @@ export default function StaffProfilePage() {
               onClick={handleEdit}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2"
             >
-              {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+              {/*  - Lucide icon type issue with strict TypeScript */}
               <Edit className="w-4 h-4" />
               <span>Edit Profile</span>
             </button>
@@ -137,7 +137,7 @@ export default function StaffProfilePage() {
                 onClick={handleCancel}
                 className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 flex items-center space-x-2"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <X className="w-4 h-4" />
                 <span>Cancel</span>
               </button>
@@ -146,7 +146,7 @@ export default function StaffProfilePage() {
                 disabled={isLoading}
                 className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center space-x-2 disabled:opacity-50"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <Save className="w-4 h-4" />
                 <span>{isLoading ? 'Saving...' : 'Save Changes'}</span>
               </button>
@@ -168,7 +168,7 @@ export default function StaffProfilePage() {
                 </div>
                 {isEditing && (
                   <button className="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700">
-                    {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                    {/*  - Lucide icon type issue with strict TypeScript */}
                     <Camera className="w-4 h-4" />
                   </button>
                 )}
@@ -181,22 +181,22 @@ export default function StaffProfilePage() {
 
             <div className="mt-6 space-y-4">
               <div className="flex items-center space-x-3">
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <Mail className="w-5 h-5 text-gray-400" />
                 <span className="text-sm text-gray-600">{currentProfile.email}</span>
               </div>
               <div className="flex items-center space-x-3">
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <Phone className="w-5 h-5 text-gray-400" />
                 <span className="text-sm text-gray-600">{currentProfile.phone}</span>
               </div>
               <div className="flex items-center space-x-3">
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <MapPin className="w-5 h-5 text-gray-400" />
                 <span className="text-sm text-gray-600">{currentProfile.address}</span>
               </div>
               <div className="flex items-center space-x-3">
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <Calendar className="w-5 h-5 text-gray-400" />
                 <span className="text-sm text-gray-600">Joined {formatDate(currentProfile.hire_date)}</span>
               </div>
@@ -209,7 +209,7 @@ export default function StaffProfilePage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <BookOpen className="w-6 h-6 text-blue-600" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900">{profile.teaching_stats.total_courses}</p>
@@ -217,7 +217,7 @@ export default function StaffProfilePage() {
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Users className="w-6 h-6 text-green-600" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900">{profile.teaching_stats.total_students}</p>
@@ -225,7 +225,7 @@ export default function StaffProfilePage() {
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Clock className="w-6 h-6 text-purple-600" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900">{profile.teaching_stats.total_lessons}</p>
@@ -233,7 +233,7 @@ export default function StaffProfilePage() {
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Award className="w-6 h-6 text-yellow-600" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900">{profile.teaching_stats.avg_rating}</p>

@@ -223,7 +223,7 @@ export default function StudentProfilePage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Student Not Found</h1>
           <p className="text-gray-600 mb-6">The student you're looking for doesn't exist.</p>
-          {/* @ts-expect-error - Next.js Link component type issue with strict TypeScript */}
+          {/*  - Next.js Link component type issue with strict TypeScript */}
           <Link href="/staff/students" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium">
             Back to Students
           </Link>
@@ -241,7 +241,7 @@ export default function StudentProfilePage() {
             <h1 className="text-3xl font-bold text-gray-900">Student Profile</h1>
             <p className="text-gray-600 mt-2">View and manage student information and certificates</p>
           </div>
-          {/* @ts-expect-error - Next.js Link component type issue with strict TypeScript */}
+          {/*  - Next.js Link component type issue with strict TypeScript */}
           <Link href="/staff/students" className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium">
             Back to Students
           </Link>

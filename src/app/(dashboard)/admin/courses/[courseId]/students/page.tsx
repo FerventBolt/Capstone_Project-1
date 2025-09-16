@@ -262,7 +262,7 @@ export default function CourseStudentManagementPage() {
                 href={`/admin/courses/${courseId}`}
                 className="text-gray-500 hover:text-gray-700 mr-4 flex items-center"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 Back to Course
               </Link>
@@ -289,7 +289,7 @@ export default function CourseStudentManagementPage() {
                 <p className="text-sm font-medium text-gray-600">Enrolled Students</p>
                 <p className="text-2xl font-bold text-gray-900">{enrolledStudents.length}</p>
               </div>
-              {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+              {/*  - Lucide icon type issue with strict TypeScript */}
               <UserPlus className="w-8 h-8 text-blue-600" />
             </div>
           </div>
@@ -300,7 +300,7 @@ export default function CourseStudentManagementPage() {
                 <p className="text-sm font-medium text-gray-600">Available Spots</p>
                 <p className="text-2xl font-bold text-gray-900">{course.maxStudents - enrolledStudents.length}</p>
               </div>
-              {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+              {/*  - Lucide icon type issue with strict TypeScript */}
               <Plus className="w-8 h-8 text-green-600" />
             </div>
           </div>
@@ -315,7 +315,7 @@ export default function CourseStudentManagementPage() {
                     : 0}%
                 </p>
               </div>
-              {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+              {/*  - Lucide icon type issue with strict TypeScript */}
               <TrendingUp className="w-8 h-8 text-purple-600" />
             </div>
           </div>
@@ -330,7 +330,7 @@ export default function CourseStudentManagementPage() {
                     : 0}%
                 </p>
               </div>
-              {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+              {/*  - Lucide icon type issue with strict TypeScript */}
               <BookOpen className="w-8 h-8 text-orange-600" />
             </div>
           </div>
@@ -342,7 +342,7 @@ export default function CourseStudentManagementPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="relative">
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <input
                     type="text"
@@ -358,7 +358,7 @@ export default function CourseStudentManagementPage() {
                   onClick={handleEnrollStudents}
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2"
                 >
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <UserPlus className="w-4 h-4" />
                   <span>Enroll {selectedStudents.length} Student{selectedStudents.length > 1 ? 's' : ''}</span>
                 </button>
@@ -407,19 +407,19 @@ export default function CourseStudentManagementPage() {
                       <h4 className="text-lg font-semibold text-gray-900">{student.name}</h4>
                       <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
                         <div className="flex items-center space-x-1">
-                          {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                          {/*  - Lucide icon type issue with strict TypeScript */}
                           <Mail className="w-4 h-4" />
                           <span>{student.email}</span>
                         </div>
                         {student.phone && (
                           <div className="flex items-center space-x-1">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <Phone className="w-4 h-4" />
                             <span>{student.phone}</span>
                           </div>
                         )}
                         <div className="flex items-center space-x-1">
-                          {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                          {/*  - Lucide icon type issue with strict TypeScript */}
                           <Calendar className="w-4 h-4" />
                           <span>Enrolled: {student.enrolledAt ? new Date(student.enrolledAt).toLocaleDateString() : 'N/A'}</span>
                         </div>
@@ -458,7 +458,7 @@ export default function CourseStudentManagementPage() {
                         onClick={() => handleUnenrollStudent(student.id)}
                         className="text-red-600 hover:text-red-500 text-sm font-medium flex items-center space-x-1"
                       >
-                        {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                        {/*  - Lucide icon type issue with strict TypeScript */}
                         <UserMinus className="w-4 h-4" />
                         <span>Unenroll</span>
                       </button>
@@ -530,13 +530,13 @@ export default function CourseStudentManagementPage() {
                       <h4 className="text-lg font-semibold text-gray-900">{student.name}</h4>
                       <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
                         <div className="flex items-center space-x-1">
-                          {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                          {/*  - Lucide icon type issue with strict TypeScript */}
                           <Mail className="w-4 h-4" />
                           <span>{student.email}</span>
                         </div>
                         {student.phone && (
                           <div className="flex items-center space-x-1">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <Phone className="w-4 h-4" />
                             <span>{student.phone}</span>
                           </div>

@@ -824,7 +824,7 @@ export default function StaffCoursesPage() {
             onClick={() => setShowCreateCourseModal(true)}
             className="btn-primary flex items-center space-x-2"
           >
-            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+            {/*  - Lucide icon type issue with strict TypeScript */}
             <Plus className="w-4 h-4" />
             <span>Create New Course</span>
           </button>
@@ -1540,7 +1540,7 @@ export default function StaffCoursesPage() {
                     onClick={addLesson}
                     className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2"
                   >
-                    {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                    {/*  - Lucide icon type issue with strict TypeScript */}
                     <Plus className="w-4 h-4" />
                     <span>Add Lesson</span>
                   </button>
@@ -1801,7 +1801,7 @@ export default function StaffCoursesPage() {
                   onClick={addEditingLesson}
                   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2"
                 >
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Plus className="w-4 h-4" />
                   <span>Add Lesson</span>
                 </button>

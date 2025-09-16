@@ -304,7 +304,7 @@ export default function StudentCourseDetailPage() {
                 onClick={() => router.push('/student/courses')}
                 className="text-gray-500 hover:text-gray-700 mr-4 flex items-center"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 Back to Courses
               </button>
@@ -350,7 +350,7 @@ export default function StudentCourseDetailPage() {
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Icon className="w-4 h-4" />
                   <span>{tab.label}</span>
                 </button>
@@ -372,7 +372,7 @@ export default function StudentCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">My Progress</p>
                     <p className="text-2xl font-bold text-gray-900">{enrollment.progress}%</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <CheckCircle className="w-8 h-8 text-blue-600" />
                 </div>
               </div>
@@ -383,7 +383,7 @@ export default function StudentCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Lessons Completed</p>
                     <p className="text-2xl font-bold text-gray-900">{enrollment.lessonsCompleted}/{enrollment.totalLessons}</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <BookOpen className="w-8 h-8 text-green-600" />
                 </div>
               </div>
@@ -394,7 +394,7 @@ export default function StudentCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Assignments Submitted</p>
                     <p className="text-2xl font-bold text-gray-900">{submissions.length}</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <FileText className="w-8 h-8 text-purple-600" />
                 </div>
               </div>
@@ -405,7 +405,7 @@ export default function StudentCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Course Duration</p>
                     <p className="text-2xl font-bold text-gray-900">{course.duration}h</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Clock className="w-8 h-8 text-orange-600" />
                 </div>
               </div>
@@ -452,7 +452,7 @@ export default function StudentCourseDetailPage() {
 
             {lessons.length === 0 ? (
               <div className="bg-white rounded-lg shadow-sm border p-12 text-center">
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900 mb-2">No content available</h3>
                 <p className="text-gray-600">Course content will be added by your instructor.</p>
@@ -478,17 +478,17 @@ export default function StudentCourseDetailPage() {
                         
                         <div className="grid grid-cols-3 gap-4 text-sm text-gray-600">
                           <div className="flex items-center space-x-2">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <Clock className="w-4 h-4" />
                             <span>{lesson.duration} minutes</span>
                           </div>
                           <div className="flex items-center space-x-2">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <FileText className="w-4 h-4" />
                             <span>{lesson.materials.length} materials</span>
                           </div>
                           <div className="flex items-center space-x-2">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <CheckCircle className="w-4 h-4" />
                             <span>{lesson.assignments.length} assignments</span>
                           </div>
@@ -608,7 +608,7 @@ export default function StudentCourseDetailPage() {
                         )}
                         {submission?.status === 'graded' && (
                           <div className="flex items-center text-green-600 text-sm font-medium">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <CheckCircle className="w-4 h-4 mr-1" />
                             <span>Assignment Graded</span>
                           </div>
@@ -621,7 +621,7 @@ export default function StudentCourseDetailPage() {
 
               {lessons.flatMap(l => l.assignments.filter(a => a.status === 'published')).length === 0 && (
                 <div className="bg-white rounded-lg shadow-sm border p-12 text-center">
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-gray-900 mb-2">No assignments available</h3>
                   <p className="text-gray-600">Assignments will be published by your instructor.</p>
@@ -750,7 +750,7 @@ export default function StudentCourseDetailPage() {
                     htmlFor="file-upload"
                     className="cursor-pointer flex flex-col items-center"
                   >
-                    {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                    {/*  - Lucide icon type issue with strict TypeScript */}
                     <Upload className="w-8 h-8 text-gray-400 mb-2" />
                     <p className="text-sm text-gray-600 text-center">
                       Click to upload a file or drag and drop

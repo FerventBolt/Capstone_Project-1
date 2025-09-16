@@ -164,7 +164,7 @@ export default function StaffCourseDetailPage() {
                 href="/staff/courses"
                 className="text-gray-500 hover:text-gray-700 mr-4 flex items-center"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 Back to Courses
               </Link>
@@ -185,7 +185,7 @@ export default function StaffCourseDetailPage() {
                 onClick={handleCreateContent}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <Plus className="w-4 h-4" />
                 <span>Add Content</span>
               </button>
@@ -215,7 +215,7 @@ export default function StaffCourseDetailPage() {
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Icon className="w-4 h-4" />
                   <span>{tab.label}</span>
                 </button>
@@ -237,7 +237,7 @@ export default function StaffCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Enrolled Students</p>
                     <p className="text-2xl font-bold text-gray-900">{course.enrolledStudents}</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Users className="w-8 h-8 text-blue-600" />
                 </div>
               </div>
@@ -248,7 +248,7 @@ export default function StaffCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Total Lessons</p>
                     <p className="text-2xl font-bold text-gray-900">{lessons.length}</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <BookOpen className="w-8 h-8 text-green-600" />
                 </div>
               </div>
@@ -259,7 +259,7 @@ export default function StaffCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Pending Submissions</p>
                     <p className="text-2xl font-bold text-gray-900">{course.pendingSubmissions}</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <AlertCircle className="w-8 h-8 text-red-600" />
                 </div>
               </div>
@@ -270,7 +270,7 @@ export default function StaffCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Completion Rate</p>
                     <p className="text-2xl font-bold text-gray-900">{course.completionRate}%</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <CheckCircle className="w-8 h-8 text-purple-600" />
                 </div>
               </div>
@@ -316,7 +316,7 @@ export default function StaffCourseDetailPage() {
                 onClick={handleCreateContent}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <Plus className="w-4 h-4" />
                 <span>Add New Content</span>
               </button>
@@ -324,7 +324,7 @@ export default function StaffCourseDetailPage() {
 
             {lessons.length === 0 ? (
               <div className="bg-white rounded-lg shadow-sm border p-12 text-center">
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900 mb-2">No content yet</h3>
                 <p className="text-gray-600 mb-4">Start building your course by adding lessons and materials.</p>
@@ -356,17 +356,17 @@ export default function StaffCourseDetailPage() {
                         
                         <div className="grid grid-cols-3 gap-4 text-sm text-gray-600">
                           <div className="flex items-center space-x-2">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <Clock className="w-4 h-4" />
                             <span>{lesson.duration} minutes</span>
                           </div>
                           <div className="flex items-center space-x-2">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <FileText className="w-4 h-4" />
                             <span>{lesson.materials.length} materials</span>
                           </div>
                           <div className="flex items-center space-x-2">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <CheckCircle className="w-4 h-4" />
                             <span>{lesson.assignments.length} assignments</span>
                           </div>
@@ -404,7 +404,7 @@ export default function StaffCourseDetailPage() {
                           className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
                           title="Edit Content"
                         >
-                          {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                          {/*  - Lucide icon type issue with strict TypeScript */}
                           <Edit className="w-4 h-4" />
                         </button>
                         <button
@@ -516,7 +516,7 @@ export default function StaffCourseDetailPage() {
                       {course.enrolledStudents > 0 ? Math.round((75 + 60 + 90) / 3) : 0}%
                     </p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
               </div>
@@ -527,7 +527,7 @@ export default function StaffCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Active Students</p>
                     <p className="text-2xl font-bold text-gray-900">{course.enrolledStudents}</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Users className="w-8 h-8 text-blue-600" />
                 </div>
               </div>
@@ -538,7 +538,7 @@ export default function StaffCourseDetailPage() {
                     <p className="text-sm font-medium text-gray-600">Completion Rate</p>
                     <p className="text-2xl font-bold text-gray-900">{course.completionRate}%</p>
                   </div>
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <AlertCircle className="w-8 h-8 text-purple-600" />
                 </div>
               </div>

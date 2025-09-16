@@ -149,7 +149,7 @@ export default function NewContentPage() {
                 href={`/staff/courses/${courseId}`}
                 className="text-gray-500 hover:text-gray-700 mr-4 flex items-center"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 Back to Course
               </Link>
@@ -164,7 +164,7 @@ export default function NewContentPage() {
                 disabled={saving}
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <Save className="w-4 h-4" />
                 <span>{saving ? 'Creating...' : 'Create Lesson'}</span>
               </button>
@@ -242,7 +242,7 @@ export default function NewContentPage() {
                   onClick={addMaterial}
                   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2"
                 >
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Plus className="w-4 h-4" />
                   <span>Add Material</span>
                 </button>
@@ -280,7 +280,7 @@ export default function NewContentPage() {
                           onClick={() => removeMaterial(material.id)}
                           className="w-full bg-red-50 text-red-600 hover:bg-red-100 px-3 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2"
                         >
-                          {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                          {/*  - Lucide icon type issue with strict TypeScript */}
                           <Trash2 className="w-4 h-4" />
                           <span>Remove</span>
                         </button>
@@ -303,7 +303,7 @@ export default function NewContentPage() {
                         <label className="block text-sm font-medium text-gray-700 mb-2">File Upload</label>
                         <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
                           <div className="text-center">
-                            {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                            {/*  - Lucide icon type issue with strict TypeScript */}
                             <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                             <p className="text-sm text-gray-600">Click to upload or drag and drop</p>
                             <p className="text-xs text-gray-500 mt-1">
@@ -334,7 +334,7 @@ export default function NewContentPage() {
                   onClick={addAssignment}
                   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2"
                 >
-                  {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                  {/*  - Lucide icon type issue with strict TypeScript */}
                   <Plus className="w-4 h-4" />
                   <span>Add Assignment</span>
                 </button>
@@ -413,7 +413,7 @@ export default function NewContentPage() {
                           onClick={() => removeAssignment(assignment.id)}
                           className="w-full bg-red-50 text-red-600 hover:bg-red-100 px-3 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2"
                         >
-                          {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                          {/*  - Lucide icon type issue with strict TypeScript */}
                           <Trash2 className="w-4 h-4" />
                           <span>Remove</span>
                         </button>

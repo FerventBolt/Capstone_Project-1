@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/client'
+import { supabase } from '@/lib/supabase/supabase-client'
 
 export type FileCategory = 
   | 'profile_pictures'
@@ -37,7 +37,7 @@ export interface FileUploadResult {
 }
 
 class StorageService {
-  private supabase = createClient()
+  private supabase = supabase
 
   // Default file size limits (in bytes)
   private readonly DEFAULT_LIMITS = {
@@ -71,10 +71,11 @@ class StorageService {
       }
 
       // Get current user
-      const { data: { user }, error: userError } = await this.supabase.auth.getUser()
-      if (userError || !user) {
+      const { data: userData, error: userError } = await this.supabase.auth.getUser()
+      if (userError || !userData?.user) {
         return { success: false, error: 'User not authenticated' }
       }
+      const user = userData.user
 
       // Generate file path
       const filePath = this.generateFilePath(file, options, user.id)
@@ -127,7 +128,7 @@ class StorageService {
 
       const { data: dbData, error: dbError } = await this.supabase
         .from('files')
-        .insert(fileRecord)
+        .insert([fileRecord])
         .select()
         .single()
 

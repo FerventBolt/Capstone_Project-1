@@ -134,7 +134,7 @@ export default function SubmissionDetailPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Submission Not Found</h1>
           <p className="text-gray-600 mb-6">The submission you're looking for doesn't exist.</p>
-          {/* @ts-expect-error - Next.js Link component type issue with strict TypeScript */}
+          {/*  - Next.js Link component type issue with strict TypeScript */}
           <Link href="/staff/grading" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium">
             Back to Grading
           </Link>
@@ -149,12 +149,12 @@ export default function SubmissionDetailPage() {
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            {/* @ts-expect-error - Next.js Link component type issue with strict TypeScript */}
+            {/*  - Next.js Link component type issue with strict TypeScript */}
             <Link
               href="/staff/grading"
               className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
             >
-              {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+              {/*  - Lucide icon type issue with strict TypeScript */}
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div>
@@ -164,12 +164,12 @@ export default function SubmissionDetailPage() {
           </div>
           <div className="flex space-x-3">
             {(submission.status === 'pending' || submission.status === 'late') && (
-              /* @ts-expect-error - Next.js Link component type issue with strict TypeScript */
+              /*  - Next.js Link component type issue with strict TypeScript */
               <Link
                 href={`/staff/grading/${submission.id}/grade`}
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium flex items-center space-x-2"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <Edit className="w-4 h-4" />
                 <span>Grade Submission</span>
               </Link>
@@ -227,18 +227,18 @@ export default function SubmissionDetailPage() {
                   {submission.submission_files.map((file, index) => (
                     <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center space-x-3">
-                        {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                        {/*  - Lucide icon type issue with strict TypeScript */}
                         <FileText className="w-5 h-5 text-gray-400" />
                         <span className="text-sm font-medium text-gray-900">{file}</span>
                       </div>
                       <div className="flex space-x-2">
                         <button className="text-blue-600 hover:text-blue-500 text-sm font-medium flex items-center space-x-1">
-                          {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                          {/*  - Lucide icon type issue with strict TypeScript */}
                           <Eye className="w-4 h-4" />
                           <span>View</span>
                         </button>
                         <button className="text-green-600 hover:text-green-500 text-sm font-medium flex items-center space-x-1">
-                          {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                          {/*  - Lucide icon type issue with strict TypeScript */}
                           <Download className="w-4 h-4" />
                           <span>Download</span>
                         </button>
@@ -353,12 +353,12 @@ export default function SubmissionDetailPage() {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
             <div className="space-y-3">
               <button className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <MessageCircle className="w-4 h-4" />
                 <span>Send Message</span>
               </button>
               <button className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {/*  - Lucide icon type issue with strict TypeScript */}
                 <User className="w-4 h-4" />
                 <span>View Student Profile</span>
               </button>

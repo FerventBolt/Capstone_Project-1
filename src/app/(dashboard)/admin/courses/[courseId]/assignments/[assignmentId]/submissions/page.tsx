@@ -8,7 +8,7 @@ import { ArrowLeft, Download, Eye, MessageSquare, CheckCircle, Clock, AlertCircl
 interface Submission {
   id: string
   studentId: string
-  studentName: string
+  studentName: stringgit add .
   studentEmail: string
   submittedAt: string
   content: string
@@ -151,23 +151,22 @@ export default function AssignmentSubmissionsPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'submitted': return (
-        /* @ts-expect-error - Lucide icon type issue with strict TypeScript */
+        
         <Clock className="w-4 h-4" />
       )
       case 'graded': return (
-        /* @ts-expect-error - Lucide icon type issue with strict TypeScript */
+        
         <CheckCircle className="w-4 h-4" />
       )
       case 'returned': return (
-        /* @ts-expect-error - Lucide icon type issue with strict TypeScript */
+        
         <MessageSquare className="w-4 h-4" />
       )
       case 'late': return (
-        /* @ts-expect-error - Lucide icon type issue with strict TypeScript */
+        
         <AlertCircle className="w-4 h-4" />
       )
       default: return (
-        /* @ts-expect-error - Lucide icon type issue with strict TypeScript */
         <Clock className="w-4 h-4" />
       )
     }
@@ -205,7 +204,7 @@ export default function AssignmentSubmissionsPage() {
                 href={`/admin/courses/${courseId}`}
                 className="text-gray-500 hover:text-gray-700 mr-4 flex items-center"
               >
-                {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                {}
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 Back to Course
               </Link>
@@ -306,7 +305,7 @@ export default function AssignmentSubmissionsPage() {
                   <p className="text-sm text-gray-900 whitespace-pre-wrap">{submission.content}</p>
                   {submission.fileName && (
                     <div className="mt-3 flex items-center text-sm text-blue-600">
-                      {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                      
                       <Download className="w-4 h-4 mr-1" />
                       <a href={submission.fileUrl} className="hover:underline">
                         {submission.fileName}
@@ -329,7 +328,7 @@ export default function AssignmentSubmissionsPage() {
                     onClick={() => setSelectedSubmission(submission)}
                     className="text-blue-600 hover:text-blue-500 text-sm font-medium flex items-center space-x-1"
                   >
-                    {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                    
                     <Eye className="w-4 h-4" />
                     <span>View Details</span>
                   </button>
@@ -338,7 +337,7 @@ export default function AssignmentSubmissionsPage() {
                       href={submission.fileUrl}
                       className="text-green-600 hover:text-green-500 text-sm font-medium flex items-center space-x-1"
                     >
-                      {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                      
                       <Download className="w-4 h-4" />
                       <span>Download</span>
                     </a>
@@ -467,7 +466,7 @@ export default function AssignmentSubmissionsPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Attached File</label>
                   <div className="flex items-center space-x-2">
-                    {/* @ts-expect-error - Lucide icon type issue with strict TypeScript */}
+                    
                     <Download className="w-4 h-4 text-blue-600" />
                     <a href={selectedSubmission.fileUrl} className="text-blue-600 hover:underline">
                       {selectedSubmission.fileName}

@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/client'
+import { supabase } from '@/lib/supabase/supabase-client'
 import { RealtimeChannel } from '@supabase/supabase-js'
 
 export interface Notification {
@@ -20,7 +20,7 @@ export interface NotificationSubscription {
 }
 
 class NotificationService {
-  private supabase = createClient()
+  private supabase = supabase
   private channels: Map<string, RealtimeChannel> = new Map()
 
   /**
@@ -153,7 +153,7 @@ class NotificationService {
     try {
       const { data, error } = await this.supabase
         .from('notifications')
-        .insert({
+        .insert([{
           id: crypto.randomUUID(),
           user_id: notification.user_id,
           title: notification.title,
@@ -165,7 +165,7 @@ class NotificationService {
           metadata: notification.metadata || null,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
-        })
+        }])
         .select()
         .single()
 
