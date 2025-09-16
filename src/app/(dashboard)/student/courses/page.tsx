@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { initializeCourseContent, isCourseContentInitialized, markCourseContentInitialized } from 'C:/CapstoneProject/Capstone_Project-main/src/lib/initialize-course-content'
+import { initializeCourseContent, isCourseContentInitialized, markCourseContentInitialized } from '@/lib/initialize-course-content'
 
 interface Course {
   id: string

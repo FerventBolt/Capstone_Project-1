@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { supabase } from 'C:/CapstoneProject/Capstone_Project-main/src/lib/supabase/supabase-client'
+import { supabase } from "@/lib/supabase/supabase-client";
+
 import axios from 'axios'
 
 export default function RegisterPage() {
