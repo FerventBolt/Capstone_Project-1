@@ -1,54 +1,80 @@
 // src/app/(auth)/login/LoginClient.tsx
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function LoginClient() {
   const router = useRouter()
   const params = useSearchParams()
-  const redirectTo = params.get("redirectTo") || ""
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  // Extract Supabase error and invite params
+  const errorCode = params.get('error_code') || ''
+  const redirectTo = params.get('redirectTo') || ''
+  const invitedEmail = params.get('email') || ''
+
+  // If our magic link expired, reroute to /register
+  useEffect(() => {
+    if (errorCode === 'otp_expired') {
+      const target = `/register?redirectTo=${encodeURIComponent(
+        redirectTo
+      )}${invitedEmail ? `&email=${encodeURIComponent(invitedEmail)}` : ''}`
+      router.replace(target)
+    }
+  }, [errorCode, redirectTo, invitedEmail, router])
+
+  // While redirecting, show a placeholder
+  if (errorCode === 'otp_expired') {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-gray-600">Link expired. Redirecting to resend…</p>
+      </div>
+    )
+  }
+
+  // Normal login form state
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError("")
+    setError('')
 
     try {
-      const resp = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const resp = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       })
       const body = await resp.json()
 
       if (!resp.ok) {
-        setError(body.error || "Unknown error")
+        setError(body.error || 'Unknown error')
         return
       }
 
       const role: string | undefined = body.role
 
+      // If someone passed a redirectTo, honor it
       if (redirectTo) {
         window.location.href = redirectTo
         return
       }
 
-      if (role === "admin") {
-        window.location.href = "/admin/dashboard"
-      } else if (role === "student") {
-        window.location.href = "/student/dashboard"
-      } else if (role === "staff") {
-        window.location.href = "/staff/dashboard"
+      // Otherwise route by role
+      if (role === 'admin') {
+        window.location.href = '/admin/dashboard'
+      } else if (role === 'student') {
+        window.location.href = '/student/dashboard'
+      } else if (role === 'staff') {
+        window.location.href = '/staff/dashboard'
       } else {
-        window.location.href = "/"
+        window.location.href = '/'
       }
     } catch (err) {
-      console.error("[login] fetch error:", err)
-      setError("Network error")
+      console.error('[login] fetch error:', err)
+      setError('Network error')
     }
   }
 
