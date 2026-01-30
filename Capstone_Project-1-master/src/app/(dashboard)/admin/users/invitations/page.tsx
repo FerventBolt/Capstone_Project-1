@@ -22,17 +22,21 @@ export default function InvitationsPage() {
     role: 'student' as 'admin' | 'staff' | 'student',
   })
 
+  // Base URL for invite links
+  const baseUrl =
+    (typeof window !== 'undefined' && window.location.origin) ||
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    ''
+
   useEffect(() => {
     fetchInvitations()
   }, [])
 
-  // ─── Fetch from your GET route ─────────────────────────────────────
+  // ─── Fetch Invitations ───────────────────────────────────────────────────────
   async function fetchInvitations() {
     setLoading(true)
     try {
-      const res = await fetch('/api/invitations', {
-        credentials: 'include',
-      })
+      const res = await fetch('/api/invitations', { credentials: 'include' })
       if (!res.ok) throw new Error(`Error ${res.status}`)
       const data = (await res.json()) as Invitation[]
       setInvitations(data)
@@ -44,7 +48,7 @@ export default function InvitationsPage() {
     }
   }
 
-  // ─── Create via POST /api/invite ─────────────────────────────────
+  // ─── Send New Invite ─────────────────────────────────────────────────────────
   async function handleCreateInvitation(e: React.FormEvent) {
     e.preventDefault()
     if (!newInvitation.email.trim()) {
@@ -76,7 +80,7 @@ export default function InvitationsPage() {
     setLoading(false)
   }
 
-  // ─── Revoke via PATCH /api/invitations/[id] ──────────────────────
+  // ─── Revoke / Expire Invite ─────────────────────────────────────────────────
   async function handleRevoke(id: string) {
     if (!confirm('Revoke this invitation?')) return
     setLoading(true)
@@ -94,7 +98,7 @@ export default function InvitationsPage() {
     setLoading(false)
   }
 
-  // ─── Delete via DELETE /api/invitations/[id] ─────────────────────
+  // ─── Delete Invite ───────────────────────────────────────────────────────────
   async function handleDelete(id: string) {
     if (!confirm('Permanently delete this invitation?')) return
     setLoading(true)
@@ -109,6 +113,24 @@ export default function InvitationsPage() {
       await fetchInvitations()
     }
     setLoading(false)
+  }
+
+  // ─── Copy to Clipboard Utility (now includes inviteId) ───────────────────────
+  function copyInviteLink(inviteId: string, role: string, email: string) {
+    const link = `${baseUrl}/register?role=${role}&email=${encodeURIComponent(
+      email
+    )}&inviteId=${encodeURIComponent(inviteId)}`
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard
+        .writeText(link)
+        .then(() => alert('Prefilled registration link copied to clipboard'))
+        .catch(() => {
+          // fallback
+          window.prompt('Copy this link', link)
+        })
+    } else {
+      window.prompt('Copy this link', link)
+    }
   }
 
   if (loading) {
@@ -129,7 +151,7 @@ export default function InvitationsPage() {
         </button>
       </div>
 
-      {/* Form */}
+      {/* New Invitation Modal */}
       {showForm && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded shadow-lg w-full max-w-md">
@@ -182,7 +204,7 @@ export default function InvitationsPage() {
         </div>
       )}
 
-      {/* Table */}
+      {/* Invitations Table */}
       <div className="overflow-x-auto bg-white rounded shadow border">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -195,6 +217,7 @@ export default function InvitationsPage() {
                 'Expires At',
                 'User ID',
                 'Accepted At',
+                'Invite Link',
                 'Actions',
               ].map(col => (
                 <th
@@ -206,42 +229,65 @@ export default function InvitationsPage() {
               ))}
             </tr>
           </thead>
+
           <tbody className="divide-y divide-gray-200">
-            {invitations.map(inv => (
-              <tr key={inv.id} className="hover:bg-gray-50">
-                <td className="px-4 py-2 text-sm">{inv.email}</td>
-                <td className="px-4 py-2 text-sm">{inv.role}</td>
-                <td className="px-4 py-2 text-sm">{inv.status}</td>
-                <td className="px-4 py-2 text-sm">
-                  {new Date(inv.sent_at).toLocaleString()}
-                </td>
-                <td className="px-4 py-2 text-sm">
-                  {new Date(inv.expires_at).toLocaleString()}
-                </td>
-                <td className="px-4 py-2 text-sm">{inv.user_id ?? '-'}</td>
-                <td className="px-4 py-2 text-sm">
-                  {inv.accepted_at
-                    ? new Date(inv.accepted_at).toLocaleString()
-                    : '-'}
-                </td>
-                <td className="px-4 py-2 text-sm space-x-2">
-                  {inv.status === 'pending' && (
+            {invitations.map(inv => {
+              const inviteLink = `${baseUrl}/register?role=${inv.role}&email=${encodeURIComponent(
+                inv.email
+              )}&inviteId=${encodeURIComponent(inv.id)}`
+
+              return (
+                <tr key={inv.id} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 text-sm">{inv.email}</td>
+                  <td className="px-4 py-2 text-sm">{inv.role}</td>
+                  <td className="px-4 py-2 text-sm">{inv.status}</td>
+                  <td className="px-4 py-2 text-sm">
+                    {new Date(inv.sent_at).toLocaleString()}
+                  </td>
+                  <td className="px-4 py-2 text-sm">
+                    {new Date(inv.expires_at).toLocaleString()}
+                  </td>
+                  <td className="px-4 py-2 text-sm">{inv.user_id ?? '-'}</td>
+                  <td className="px-4 py-2 text-sm">
+                    {inv.accepted_at
+                      ? new Date(inv.accepted_at).toLocaleString()
+                      : '-'}
+                  </td>
+
+                  {/* Invite Link Column */}
+                  <td className="px-4 py-2 text-sm">
                     <button
-                      onClick={() => handleRevoke(inv.id)}
-                      className="text-red-600 hover:underline"
+                      onClick={() => copyInviteLink(inv.id, inv.role, inv.email)}
+                      className="text-blue-600 hover:underline"
+                      title="This pre-fills the registration form (inviteId links the registration to this invitation)."
                     >
-                      Revoke
+                      Copy Prefilled Link
                     </button>
-                  )}
-                  <button
-                    onClick={() => handleDelete(inv.id)}
-                    className="text-gray-600 hover:underline"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
+                    <div className="text-xs text-gray-400 mt-1">
+                      Prefill link: <span className="font-mono break-all">{inviteLink}</span>
+                    </div>
+                  </td>
+
+                  {/* Actions */}
+                  <td className="px-4 py-2 text-sm space-x-2">
+                    {inv.status === 'pending' && (
+                      <button
+                        onClick={() => handleRevoke(inv.id)}
+                        className="text-red-600 hover:underline"
+                      >
+                        Revoke
+                      </button>
+                    )}
+                    <button
+                      onClick={() => handleDelete(inv.id)}
+                      className="text-gray-600 hover:underline"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>

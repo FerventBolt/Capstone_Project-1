@@ -3,51 +3,49 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from '@supabase/supabase-js'
 
-// ← Must be your Supabase project URL, *not* NEXT_PUBLIC_BASE_URL
+// Server-side Supabase keys (never expose these in the browser)
 const SUPABASE_URL = process.env.SUPABASE_URL!
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!
 
 const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' })
+    return res.status(405).json({ error: 'Method Not Allowed – use POST to send invites.' })
   }
 
-  const { email, role } = req.body as { email: string; role: string }
+  const { email, role = 'student' } = req.body as { email?: string; role?: string }
 
-  // 1) Build & log your /register callback URL
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, '') ||
-    'http://localhost:3000'
-  const invitePageUrl = new URL('/register', baseUrl)
-  invitePageUrl.searchParams.set('redirectTo', '/student/dashboard')
-  invitePageUrl.searchParams.set('email', email)
-  const redirectTo = invitePageUrl.toString()
-  console.log('📨 [invite] redirectTo =', redirectTo)
+  if (!email || typeof email !== 'string') {
+    return res.status(400).json({ error: 'Missing or invalid email' })
+  }
 
-  // 2) Call GoTrue’s invite endpoint with our custom redirect
-  const { data: inviteData, error: inviteErr } =
-    await supabaseAdmin.auth.admin.inviteUserByEmail(email, {
+  try {
+    // Build the /register redirect URL that will be embedded into the magic-link
+    const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, '') ?? 'http://localhost:3000')
+    const registerUrl = new URL('/register', baseUrl)
+    registerUrl.searchParams.set('role', role)
+    registerUrl.searchParams.set('email', email)
+
+    const redirectTo = registerUrl.toString()
+    console.log('📨 [invite] redirectTo →', redirectTo)
+
+    // Send the invite; Supabase will include redirectTo as redirect_to in the verify URL
+    const { data: inviteData, error: inviteErr } = await supabaseAdmin.auth.admin.inviteUserByEmail(email, {
       redirectTo,
       data: { role },
     })
 
-  if (inviteErr) {
-    console.error('❌ [invite] inviteUserByEmail error:', inviteErr.message)
-    return res.status(500).json({ error: inviteErr.message })
-  }
+    if (inviteErr) {
+      console.error('❌ [invite] inviteUserByEmail failed:', inviteErr.message)
+      return res.status(500).json({ success: false, error: inviteErr.message })
+    }
 
-  const invitedUser = inviteData.user!
-  console.log('✅ [invite] invitedUser.id =', invitedUser.id)
+    const invitedUser = inviteData.user!
+    console.log('✅ [invite] invitedUser.id →', invitedUser.id)
 
-  // 3) Persist into your invitations table
-  const { error: dbErr } = await supabaseAdmin
-    .from('invitations')
-    .insert({
+    // Persist the invitation record (non-fatal)
+    const { error: dbErr } = await supabaseAdmin.from('invitations').insert({
       id: invitedUser.id,
       email,
       role,
@@ -56,13 +54,19 @@ export default async function handler(
       expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
     })
 
-  if (dbErr) {
-    console.error('❌ [invite] invitations.insert error:', dbErr.message)
-  }
+    if (dbErr) {
+      console.error('❌ [invite] invitations.insert error:', dbErr.message)
+    }
 
-  // 4) Return the user and the URL your client can preview
-  return res.status(200).json({
-    user: invitedUser,
-    inviteUrl: redirectTo,
-  })
+    // Return server-built preview URL plus Supabase invite data for debugging
+    return res.status(200).json({
+      success: true,
+      user: invitedUser,
+      inviteUrl: redirectTo,   // preview: where the magic link should return the user
+      inviteData: inviteData,  // raw Supabase response (no token included)
+    })
+  } catch (err: any) {
+    console.error('❌ [invite] unexpected error:', err)
+    return res.status(500).json({ success: false, error: err.message || 'Unknown error' })
+  }
 }
